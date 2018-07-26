@@ -1,7 +1,14 @@
-func1(value1)
-  .then(func2)
-  .then(func3)
-  .then(func4)
-  .then(func5, value5 => {
-    // Do something with value 5
-  });
+class Geladeira {
+  constructor() {
+    this.items = ['ovo', 'peixe', 'arroz'];
+  }
+
+  printItems() {
+    console.log(this.items);
+  }
+
+  addItems(item) {
+    this.items.push(item);
+    console.log(`${item} adicionado com sucesso!`);
+  }
+}

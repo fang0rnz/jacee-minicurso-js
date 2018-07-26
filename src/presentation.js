@@ -28,7 +28,7 @@ require('normalize.css');
 const theme = createTheme(
   {
     primary: 'white',
-    secondary: '#1F2022',
+    secondary: '#1F1822',
     tertiary: '#03A9FC',
     quartenary: '#CECECE'
   },
@@ -37,15 +37,15 @@ const theme = createTheme(
     secondary: 'Helvetica'
   }
 );
-const bg =
-  'https://wallpapertag.com/wallpaper/full/e/c/2/20516-vaporwave-wallpaper-1920x1080-for-full-hd.jpg';
+const bg = 'statue.jpg';
 const styleProps = {
   bgColor: 'black'
 };
 
 const BigEmoji = styled('span')`
-  font-size: 200px;
+  font-size: 180px;
 `;
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -58,7 +58,7 @@ export default class Presentation extends React.Component {
           transition={['zoom']}
           bgColor="primary"
           bgImage="
-          https://static.tumblr.com/f39d9cf23b76436897bf8f30c5907149/g1wmm1e/njqog600a/tumblr_static_tumblr_static_8zvmg4u2ymg40w88444s88kkk_640.gif
+          glitch.gif
           "
         >
           <Heading
@@ -82,15 +82,13 @@ export default class Presentation extends React.Component {
             APLICAÇÕES MODERNAS DA LÍNGUA FRANCA DA WEB
           </Heading>
         </Slide>
-        <Slide
-          transition={['fade']}
-          bgColor="tertiary"
-          bgImage="https://wallpapertag.com/wallpaper/full/e/c/2/20516-vaporwave-wallpaper-1920x1080-for-full-hd.jpg"
-        >
+        <Slide transition={['fade']} bgColor="tertiary" bgImage={bg}>
           <Heading size={4} bgColor="black" textColor="primary" caps>
             Javascript? Pra quê?
           </Heading>
-          <BigEmoji class="emoji">🤔</BigEmoji>
+          <BigEmoji aria-label="emoji" role="img" class="emoji">
+            🤔
+          </BigEmoji>
           <List>
             <Appear>
               <ListItem>Microcontroladores</ListItem>
@@ -130,6 +128,7 @@ export default class Presentation extends React.Component {
           <Heading textColor="secondary">Atribuição</Heading>
           <br />
           <CodePane
+            textSize={18}
             lang="javascript"
             source={`const person = 'Nick';
 person = 'John'; // Erro! person não pode ser reatribuida
@@ -149,6 +148,7 @@ console.log(person); // "John", reatribuição permitida com let
           <Heading textColor="secondary">Função</Heading>
           <br />
           <CodePane
+            textSize={18}
             lang="javascript"
             source={`function double(x) {
   return x * 2;
@@ -171,6 +171,7 @@ console.log(double(2)); // 4
           <Heading textColor="secondary">Array</Heading>
           <br />
           <CodePane
+            textSize={18}
             lang="javascript"
             source={`var meals = ['breakfast', 'lunch', 'dinner'];
 meals.push('brunch');
@@ -195,6 +196,7 @@ console.log(meals);
           <Heading textColor="secondary">Objeto</Heading>
           <br />
           <CodePane
+            textSize={18}
             lang="javascript"
             source={`const objeto = { propriedade: 'lorem', propriedadedois: 'ipsum' };
 console.log(objeto);
@@ -209,42 +211,67 @@ console.log(objeto);
           />
         </Slide>
         <Slide
+          transition={['zoom', 'slide']}
+          textColor="secondary"
+          bgImage={bg}
+          bgColor="primary"
+        >
+          <Heading textColor="secondary">Classe</Heading>
+          <br />
+          <CodePane
+            textSize={18}
+            lang="javascript"
+            source={`class Geladeira {
+  constructor() {
+    this.items = ['ovo', 'peixe', 'arroz'];
+  }
+
+  printItems() {
+    console.log(this.items);
+  }
+
+  addItems(item) {
+    this.items.push(item);
+    console.log(\`\${item} adicionado com sucesso!\`);
+  }
+}
+`}
+            theme="dark"
+          />
+        </Slide>
+        <Slide
           transition={['fade']}
           textColor="secondary"
-          bgImage={
-            'http://wallpaperheart.com/wp-content/uploads/2018/05/vaporwave-wallpapers-1.jpg'
-          }
+          bgImage="mac.png"
           bgColor="primary"
         >
           <Heading bgColor="black" textColor="primary">
             Hands on!
           </Heading>
-          <BigEmoji>🎊</BigEmoji>
+          <BigEmoji aria-label="emoji" role="img">
+            🎊
+          </BigEmoji>
         </Slide>
 
         <Slide
           transition={['fade']}
           textColor="secondary"
-          bgImage={
-            'http://wallpaperheart.com/wp-content/uploads/2018/05/vaporwave-wallpapers-1.jpg'
-          }
+          bgImage="mac.png"
           bgColor="primary"
         >
           <Heading size={2} bgColor="black" textColor="primary">
             Assincronicidade
           </Heading>
-          <Image src="https://image.slidesharecdn.com/javascriptlevelup-150929100238-lva1-app6892/95/javascript-levelup-by-lee-brandt-14-638.jpg?cb=1443521069" />
+          <Image src="js.png" />
         </Slide>
         <Slide
           transition={['slide']}
           textColor="secondary"
-          bgImage={
-            'http://wallpaperheart.com/wp-content/uploads/2018/05/vaporwave-wallpapers-1.jpg'
-          }
+          bgImage="mac.png"
           bgColor="primary"
         >
           <Appear>
-            <List bold textColor="black">
+            <List bold textColor="primary">
               <Appear>
                 <ListItem>Callbacks</ListItem>
               </Appear>
@@ -268,7 +295,9 @@ console.log(objeto);
         >
           <Appear>
             <Heading size={3} textColor="secondary">
-              Qual usar?<BigEmoji>🤔</BigEmoji>
+              Qual usar?<BigEmoji aria-label="emoji" role="img">
+                🤔
+              </BigEmoji>
             </Heading>
           </Appear>
         </Slide>
@@ -283,6 +312,7 @@ console.log(objeto);
             Callbacks
           </Heading>
           <CodePane
+            textSize={18}
             lang="javascript"
             source={`func1(function(value1) {
   func2(value1, function(value2) {
@@ -299,7 +329,9 @@ console.log(objeto);
             theme="dark"
           />
           <Appear>
-            <BigEmoji>🤢</BigEmoji>
+            <BigEmoji aria-label="emoji" role="img">
+              🤢
+            </BigEmoji>
           </Appear>
         </Slide>
         <Slide
@@ -312,6 +344,7 @@ console.log(objeto);
             Promises!
           </Heading>
           <CodePane
+            textSize={18}
             lang="javascript"
             source={`func1(value1)
   .then(func2)
@@ -329,7 +362,9 @@ console.log(objeto);
             theme="dark"
           />
           <Appear>
-            <BigEmoji>👍</BigEmoji>
+            <BigEmoji aria-label="emoji" role="img">
+              👍
+            </BigEmoji>
           </Appear>
         </Slide>
         <Slide
@@ -342,6 +377,7 @@ console.log(objeto);
             Async/await
           </Heading>
           <CodePane
+            textSize={18}
             lang="javascript"
             source={`var request = require('request');
 
@@ -363,21 +399,36 @@ main();
             theme="dark"
           />
           <Appear>
-            <BigEmoji>👌👌👌</BigEmoji>
+            <BigEmoji aria-label="emoji" role="img">
+              👌👌👌
+            </BigEmoji>
           </Appear>
         </Slide>
         <Slide
           transition={['fade']}
           textColor="secondary"
-          bgImage={
-            'https://www.imgbase.info/images/safe-wallpapers/digital_art/photo_manipulation/61430_photo_manipulation_vaporwave_win_95_logo.jpg'
-          }
+          bgImage={'windows.jpg'}
           bgColor="primary"
         >
           <Heading bgColor="black" textColor="primary">
             Demo time!
           </Heading>
-          <BigEmoji>😉</BigEmoji>
+          <BigEmoji aria-label="emoji" role="img">
+            😉
+          </BigEmoji>
+          <Slide
+            transition={['fade']}
+            textColor="secondary"
+            bgImage={'windows.jpg'}
+            bgColor="primary"
+          >
+            <Heading bgColor="black" textColor="primary">
+              twitter / telegram: @fang0rnz
+            </Heading>
+            <BigEmoji aria-label="emoji" role="img">
+              Demo time! 😉
+            </BigEmoji>
+          </Slide>
         </Slide>
       </Deck>
     );
